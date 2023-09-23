@@ -66,6 +66,12 @@ function fadeInputContainer() {
     $("#inputContainer").fadeIn(500);
 }
 
+// Attatch a change event listener to the language selection dropdown
+document.getElementById("languageSelect").addEventListener("change", function() {
+    const selectedLanguage = this.value;
+    document.getElementById("textInputContainer").style.display = "block";
+});
+
 // Function to add text to the userWordList
 function addToWordList() {
     const userText = document.getElementById("userText").value;
@@ -79,6 +85,9 @@ function addToWordList() {
 
         userList.appendChild(newTextElement);
         document.getElementById("userText").value = ""; // Clear the input field
+
+        document.getElementById("userWordListContainer").style.display = "block";
+        document.getElementById("generateButtonContainer").style.display = "block";
 
         // Create a tooltip for the new word
         createTooltip(newTextElement);

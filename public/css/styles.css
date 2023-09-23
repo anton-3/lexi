@@ -1,3 +1,10 @@
+body {
+  background-image: url('/backgrounds/bg1_LightModeBlur.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 #typewriter-container {
   height: 450px; /* Set a fixed height (adjust as needed) */
 }
@@ -5,7 +12,7 @@
 #typewriter {
   white-space: nowrap; /* Keep text in a single line */
   margin: 0;
-  padding-top: 350px;
+  padding-top: 300px;
   font-size: 40px;
 }
 
@@ -40,4 +47,17 @@
 .tooltip-inner {
   background-color: #333;
   color: #fff;
+}
+
+
+.custom-select-language {
+  width: 100%; /* Set the width to 100% to match the bar */
+}
+/* Centered "Generate" Button */
+.center-text {
+  text-align: center;
+}
+/* Adjust margins for the word list */
+#userWordList {
+  margin: 0;
 }
