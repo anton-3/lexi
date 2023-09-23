@@ -1,0 +1,19 @@
+{
+  "name": "hackmidwest2023",
+  "version": "1.0.0",
+  "description": "Create picture books from foreign language vocab and learn with AI!",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anton-3/hackmidwest2023.git"
+  },
+  "author": "anton-3",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/anton-3/hackmidwest2023/issues"
+  },
+  "homepage": "https://github.com/anton-3/hackmidwest2023#readme"
+}
