@@ -5,6 +5,7 @@ import { Router } from 'express'
 import { OpenAI } from 'openai'
 import { config } from 'dotenv'
 import bodyParser from 'body-parser'
+import axios from 'axios'
 
 const router = Router()
 config()
@@ -32,6 +33,9 @@ router.post('/gpt', bodyParser.json(), async (req, res) => {
   }
 })
 
+// generate the story with the GPT API
+// takes a json parameter "words" with the list of foreign language words
+// formatted as a string separated by spaces e.g. "hombre perro carro"
 router.post('/generateStory', bodyParser.json(), async (req, res) => {
   try {
     const wordsList: string = req.body.words
@@ -56,6 +60,21 @@ You will follow the following instructions
 8. You can switch up the order that you use the words in the sentences, in order to form a more cohesive narrative. 
 9. You will put the selected words in quotations each time they appear in a sentence`
     res.send(await gpt(prompt))
+  } catch (error) {
+    console.log(error)
+    res.status(500)
+  }
+})
+
+// translate the story into English with DeepL API
+router.post('/translate', bodyParser.json(), async (req, res) => {
+  try {
+    const params = {
+      target_lang: 'EN',
+      text: req.body.text,
+    }
+    const response = await axios.get(String(process.env.DEEPL_PROXY_URL), { params })
+    res.send(response.data.translations[0].text)
   } catch (error) {
     console.log(error)
     res.status(500)
