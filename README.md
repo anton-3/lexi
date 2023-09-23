@@ -14,11 +14,11 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 ## Who's on your team?
 *List the full names,  email address & Github username of your teammates*
 
-1.   **Full Name**  || **fullname@company.com**  (or fullname@school.edu if you're a CS student) || **Github Username**
-2. 
-3.
-4.
-5.
+1.   **Anton Angeletti**  || **aangeletti3@huskers.unl.edu** || **anton-3**
+2.   **Caleb Hans**  || **fullname@company.com** || **caleb-hansolo**
+3.   **Trent Nash**  || **fullname@company.com** || **itsnikolayy**
+4.   **Loc Nguyen**  || **fullname@company.com** || **locnugwin**
+5.   **Thomas Waller**  || **fullname@company.com** || **tswaller04**
 
 <br /><br />
 
