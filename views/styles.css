@@ -1,0 +1,43 @@
+#typewriter-container {
+    height: 450px; /* Set a fixed height (adjust as needed) */
+}
+
+#typewriter {
+    white-space: nowrap; /* Keep text in a single line */
+    margin: 0;
+    padding-top: 350px;
+    font-size: 40px;
+}
+
+#userWordList {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f5f5f5;
+    max-height: 150px; /* Optionally limit the height of the sidebar */
+    overflow-y: auto; /* Add vertical scroll if content exceeds the height */
+}
+
+/* Remove the top margin for the sidebar container */
+.container.mt-4 {
+    margin-top: 0;
+}
+
+#inputContainer {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.word-item {
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    user-select: none;
+}
+
+/* Customize tooltip appearance */
+.tooltip-inner {
+    background-color: #333;
+    color: #fff;
+}
