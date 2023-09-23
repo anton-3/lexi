@@ -1,11 +1,8 @@
 import express from 'express'
-// import bodyParser from 'body-parser'
 const app = express()
 const port = 7474
 
 app.set('view engine', 'ejs')
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
 
 // Remove any trailing slashes with redirect
 // https://stackoverflow.com/a/15773824
