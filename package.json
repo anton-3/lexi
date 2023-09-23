@@ -18,9 +18,12 @@
   "homepage": "https://github.com/anton-3/hackmidwest2023#readme",
   "dependencies": {
     "@pinata/sdk": "^2.1.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "express-openid-connect": "^2.17.0"
+    "express-openid-connect": "^2.17.0",
+    "openai": "^4.10.0"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.2",
