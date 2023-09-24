@@ -1,5 +1,5 @@
 {
-  "name": "hackmidwest2023",
+  "name": "lexi",
   "version": "1.0.0",
   "description": "Create picture books from foreign language vocab and learn with AI!",
   "main": "src/index.ts",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anton-3/hackmidwest2023.git"
+    "url": "git+https://github.com/anton-3/lexi.git"
   },
   "author": "anton-3",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/anton-3/hackmidwest2023/issues"
+    "url": "https://github.com/anton-3/lexi/issues"
   },
-  "homepage": "https://github.com/anton-3/hackmidwest2023#readme",
+  "homepage": "https://github.com/anton-3/lexi#readme",
   "dependencies": {
     "@pinata/sdk": "^2.1.0",
     "axios": "^1.5.0",
