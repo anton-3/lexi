@@ -8,6 +8,7 @@ import axios from 'axios'
 import { OpenAI } from 'openai'
 import { config } from 'dotenv'
 import * as fs from 'fs'
+import FormData from 'form-data'
 
 config()
 const openai = new OpenAI({
@@ -16,7 +17,6 @@ const openai = new OpenAI({
 
 // sends a prompt to GPT-3.5 and returns a response
 async function gpt(prompt: string) {
-  // console.log(prompt)
   const gptResponse = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
     messages: [{ role: 'user', content: prompt }],
@@ -41,7 +41,7 @@ Your story must contain each of the following words: ${wordString}
 You will follow the following instructions:
 1. The sentences will be written in Spanish.
 2. Each sentence MUST be written on its own line.
-3. You will write ${words.length}-${words.length + 2} sentences.
+3. You will write ${words.length} sentences.
 4. You will write the sentences and ONLY the sentences.
 5. You will include the word in the same form as written in the list. it will be the exact same spelling. it will be the exact same part f speech. you will completely avoid using similar words and alternate apellings. 
 6. You will use correct grammar and tense to mold sentences around the selected word
@@ -49,7 +49,7 @@ You will follow the following instructions:
 8. The sentences must contain each word in the word list at least once. You can use one or more listed words per sentence, but they all hve to be used at some point, and each sentence needs one listed word.
 9. The words can be used in any order, as long as they maintain a cohesive story from start to end.
 10. Do not use any pronouns such as "he, she, we, I, they".
-11. Make the sentences relatively simple, to the point where a new lanugage learner could understand.`
+11. Make the sentences relatively simple, to the point where a new language learner could understand.`
 
   return await gpt(prompt)
 }
@@ -60,6 +60,7 @@ ${story}
 
 Here are the guidelines:
 You are supposed to provide descriptions for an artist who will paint scenes of each sentence. Treat each sentence as a new scene. For each scene you have to describe each noun in great detail. For humans and animals, give physical descriptions, like hair color and style, size, chlothes, etc. For inanimate objects, describe distinct attributes like the color, shape, size, etc. 
+Please delimit the scenes with the string '---' between each scene.
 
 Because each sentence is a new scene, you want to make sure subjects and objects that appear in more than one scene are painted the same way.
 Because of this, make sure you repeat the descriptions exactly for a subject or object that appears multiple times. THis means that each time a noun appears, it will have the same description. If you first describe a man as "tall, wears ballcap, has beard", you will have to describe him as that after every sentence he is in
@@ -108,7 +109,7 @@ async function generateImage(text: string) {
     Authorization: `Bearer ${process.env.STABILITY_KEY}`,
   }
   const body = {
-    steps: 20,
+    steps: 30,
     width: 512,
     height: 512,
     seed: 0,
@@ -116,7 +117,7 @@ async function generateImage(text: string) {
     samples: 1,
     text_prompts: [
       {
-        text: `${text} (storybook, cartoon, animated)`,
+        text: `${text} THICK OUTLINE, LOW DETAIL, CARTOON, ANIMATED`,
         weight: 1,
       },
       {
@@ -132,23 +133,38 @@ async function generateImage(text: string) {
     method: 'POST',
     body: JSON.stringify(body),
   })
+  // console.log(body)
 
   if (!response.ok) {
-    console.error(`Error on image generation: ${await response.text()}`)
+    console.error(`Error on image generation`, response)
     return
   }
 
   const responseJSON = await response.json()
   responseJSON.artifacts.forEach(
     (img: { base64: WithImplicitCoercion<string> | { [Symbol.toPrimitive](hint: 'string'): string } }) => {
-      fs.writeFileSync('asdf.png', Buffer.from(img.base64, 'base64'))
+      fs.writeFileSync('temp.png', Buffer.from(img.base64, 'base64'))
     },
   )
 
-  // const response = await axios.post(String(process.env.STABILITY_URL), {
-  //   headers: headers,
-  //   data: body,
-  // })
+  const data = new FormData()
+  data.append('file', fs.createReadStream('temp.png'))
+  data.append('pinataMetadata', '{"name":"squid.png"}', { contentType: 'application/json' })
+  const config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: process.env.PINATA_PROXY_URL,
+    headers: {
+      ...data.getHeaders(),
+    },
+    data: data,
+  }
+  const res = await axios.request(config)
+  if (res.status != 200) {
+    console.error('Error, failed to upload to IPFS', res)
+    return
+  }
+  return `${process.env.IPFS_PROXY_URL}/${res.data.IpfsHash}`
 }
 
 // Generates the storybook from start to finish
@@ -156,28 +172,25 @@ async function generateAll(wordList: string) {
   app.locals.story = await generateStory(wordList)
   app.locals.storyEnglish = await translate(app.locals.story)
   app.locals.descriptiveStory = await convertDescriptive(app.locals.storyEnglish)
-  console.log('\n\nSTORY:')
-  console.log(app.locals.story)
-  console.log('ENGLISH:')
-  console.log(app.locals.storyEnglish)
-  console.log('DESCRIPTIVE:')
-  console.log(app.locals.descriptiveStory)
-  // call a fn here: use the descriptive story to generate the images
-  // then upload the images to IPFS with pinata API?
-  // then get the links and store them in an array, one per sentence in the story
-  // here we'll just use shrek pics as a placeholder
-  app.locals.imageLinks = [
-    generateImage(String(app.locals.descriptiveStory.split('\n')[0])),
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
-  ]
+  // console.log('\n\nSTORY:')
+  // console.log(app.locals.story)
+  // console.log('ENGLISH:')
+  // console.log(app.locals.storyEnglish)
+  // console.log('DESCRIPTIVE:')
+
+  const descriptivePrompts = app.locals.descriptiveStory.split('---')
+  app.locals.imageLinks = []
+  for (let i = 0; i < descriptivePrompts.length; i++) {
+    // console.log(`${i}: ${descriptivePrompts[i].trim()}`)
+    let imageLink
+    if (process.env.GENERATE_IMAGES == 'true') {
+      const imageGenText = String(descriptivePrompts[i].trim())
+      imageLink = await generateImage(imageGenText)
+    } else {
+      imageLink = process.env.FALLBACK_IMAGE_LINK
+    }
+    app.locals.imageLinks.push(imageLink)
+  }
 }
 
 export default { gpt, generateStory, translate, generateAll }
