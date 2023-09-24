@@ -35,13 +35,13 @@ Lexi is an AI-powered storybook generator who help beginners learn new languages
 
 ## What challenges are you building for? SELECT ALL THAT APPLY
 *See hackmidwest.com/#prizes for challenge details*
-- [* ]  Pinata Web3 Challenge
-- [* ]  Pinata Challenge
+- [X]  Pinata Web3 Challenge
+- [X]  Pinata Challenge
 - [ ]  Pinata ERC-6551 Challenge
 - [ ]  Okta Challenge
 - [ ]  GEHA Generative AI Emergency Response Challenge
 - [ ]  Corporate Challenge (only for official company teams)
-- [* ]  College Challenge (only for teams of up to 5 CS students from the same school)
+- [X]  College Challenge (only for teams of up to 5 CS students from the same school)
 
 <br /><br />
 
