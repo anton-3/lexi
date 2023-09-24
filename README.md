@@ -18,7 +18,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 2.   **Caleb Hans**  || **chans3@huskers.unl.edu** || **caleb-hansolo**
 3.   **Trent Nash**  || **trent@stormnetwork.org** || **itsnikolayy**
 4.   **Loc Nguyen**  || **lnguyen72@huskers.unl.edu** || **locnugwin**
-5.   **Thomas Waller**  || **fullname@company.com** || **tswaller04**
+5.   **Thomas Waller**  || **twaller9@huskers.unl.edu* || **tswaller04**
 
 <br /><br />
 

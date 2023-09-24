@@ -66,22 +66,26 @@ Please delimit the scenes with the string '---' between each scene.
 Because each sentence is a new scene, you want to make sure subjects and objects that appear in more than one scene are painted the same way.
 Because of this, make sure you repeat the descriptions exactly for a subject or object that appears multiple times. THis means that each time a noun appears, it will have the same description. If you first describe a man as "tall, wears ballcap, has beard", you will have to describe him as that after every sentence he is in
 
-Make the descriptions short but information filled. keep the descriptions to physical qualities to ensure consistency.
+Make the descriptions short but dense. keep the descriptions to physical qualities to ensure consistency.
 
 Here is an example of how you would format a description: if the sentence was "The woman walked outside", an appropriate modification would be "The woman walked outside", (the woman is tall with brown hair and is wearing a red dress)
 
-Notice how the original sentence is the same but there is added content after it. 
+Notice how the original sentence is the same but there is added description afterwards.
+
+Dont add extra items that you are not given. Only include noun descriptors and settings.
 
 There should be a description for every sentence. if the noun is an abstract idea or does not have physical properties, describe how it could be represented in visual form. 
 
 you will list those descriptors after each sentence in the format of: The "sample subject/object" is "sample descriptor"
+For example: The boy puts his toy away. (the boy is short, red haired, wears glasses), (the toy is a rubik's cube) (setting: bedroom) 
+Keep descriptions short and to the point like this
 
 Next, remember that the descriptions for nouns must be the same if you are referring to the same noun in a new sentence. Because the artist has a short memory, you must repeat the description each time the noun reappears in another sentence. Here is an example:
 "The woman walked outside"
 "The woman pet the dog"
 An appropriate modification would be
 "The woman walked outside", (the woman is tall with brown hair, wearing red), (Setting: outside)
-"The woman pet the dog" (the woman is tall with brown hair) (the dog is a black lab with a spot on his side) (Setting: outside)
+"The woman pet the dog" (the woman is tall, brown hair) (the dog is a black lab, has spot on side) (Setting: outside in park)
 
 Notice how the description for the woman is the same, because the sentences are reffering to the same woman. Make sure this is the case for your sentences.
 You cannot change the descriptors for the same noun. once you come up with one, repeat that one whenever the noun in question appears again in a future sentence
@@ -89,7 +93,7 @@ You cannot change the descriptors for the same noun. once you come up with one, 
 Also, you will specify a setting after the descriptors in each sentence in the style of: setting: "sample setting". You will replace the "sample setting" with whatever you choose. The setting will be what fits best in context.
 You will only add content after the sentence.
 
-Here is an example of how you would format a description and setting together: if the sentence was "The woman walked outside", an appropriate modification would be "The woman walked outside", (the woman is tall with brown hair and is wearing a red dress) (Setting: The park outside a house)`
+Here is an example of how you would format a description and setting together: if the sentence was "The woman walked outside", an appropriate modification would be "The woman walked outside", (the woman is tall, brown hair,red dress) (Setting: The park outside a house)`
   return await gpt(prompt)
 }
 
@@ -120,7 +124,7 @@ async function generateImage(text: string) {
     samples: 1,
     text_prompts: [
       {
-        text: `${text} THICK OUTLINE, LOW DETAIL, CARTOON, ANIMATED`,
+        text: `${text} THICK OUTLINE, LOW DETAIL, ANIMATED_CARTOON, NOT_REALISTIC`,
         weight: 1,
       },
       {
