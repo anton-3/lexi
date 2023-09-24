@@ -35,8 +35,13 @@ router.get('/story', (req, res) => {
 router.post('/', bodyParser.json(), async (req, res) => {
   // req.body.words is a post body parameter containing all words
   // space-separated e.g. "perro hombre queso cocina"
-  await util.generateAll(String(req.body.words))
-  res.redirect('/story')
+  try {
+    await util.generateAll(String(req.body.words))
+    res.status(200)
+  } catch (error) {
+    console.log(error)
+    res.status(500)
+  }
 })
 
 export { router }
