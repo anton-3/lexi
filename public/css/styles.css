@@ -1,9 +1,36 @@
+/* Light Mode */
+:root {
+  --background-image: url('/img/bg1_LightModeBlur.png');
+  --text-color: #dbd6cb;
+  --theme-contrast-color: #2f4858;
+  --button-color: #385179;
+  --button-hover-color: #485a73;
+  --border-color: #ccc;
+}
+
+/* Dark Mode */
+.dark-mode {
+  --background-image: url('/img/bg1_DarkModeBlur.png');
+  --text-color: #171717;
+  --theme-contrast-color: #e9efff;
+  --button-color: #e1f1ff;
+  --button-hover-color: #c5d1e6;
+  --border-color: #333;
+}
+
 body {
-  background-image: url('/img/bg1_LightModeBlur.png');
+  background-image: var(--background-image);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: #dbd6cb;
+  color: var(--text-color);
+}
+
+#toggleModeButton {
+  position: fixed; /* Fixed position to keep it in view while scrolling */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  z-index: 1000; /* Ensure it's above other elements */
 }
 
 #typewriter-container {
@@ -15,7 +42,7 @@ body {
   margin: 0;
   padding-top: 300px;
   font-size: 40px;
-  color: #2f4858;
+  color: var(--theme-contrast-color);
 }
 
 #userWordList {
@@ -37,16 +64,16 @@ body {
   cursor: pointer;
   margin: 5px 0;
   padding: 7px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
-  background-color: #2f4858;
+  background-color: var(--theme-contrast-color);
   user-select: none;
 }
 
 /* Customize tooltip appearance */
 .tooltip-inner {
   background-color: #333;
-  color: #dbd6cb;
+  color: var(--text-color);
 }
 
 .custom-select-language {
@@ -58,13 +85,14 @@ body {
 }
 
 #languageSelect {
-  background-color: #2f4858;
-  color: #dbd6cb;
+  background-color: var(--theme-contrast-color);
+  color: var(--text-color);
 }
 
 #userText {
-  background-color: #2f4858;
-  color: #dbd6cb;
+  background-color: var(--theme-contrast-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
 }
 
 .form-control:focus {
@@ -72,7 +100,7 @@ body {
 }
 
 #userText::placeholder {
-  color: #dbd6cb;
+  color: var(--text-color);
 }
 
 #userText:focus {
@@ -81,15 +109,15 @@ body {
 
 /* Default button styles */
 .btn-primary {
-  background-color: #385179;
-  color: #dbd6cb;
-  border-color: #dbd6cb;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
 }
 
 /* Button hover styles */
 .btn-primary:hover {
-  background-color: #485a73; /* New background color on hover */
-  border-color: #2f4858;
+  background-color: var(--button-hover-color); /* New background color on hover */
+  border-color: var(--theme-contrast-color);
 }
 
 /* STORY */
