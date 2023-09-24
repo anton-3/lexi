@@ -213,8 +213,10 @@ document.getElementById('generateButton').addEventListener('click', function () 
     words.push(element.textContent)
   })
   const wordList = words.join(' ')
+  const language = document.querySelector('#languageSelect').value
   const fetchData = {
     words: wordList,
+    language: language,
   }
   const fetchOptions = {
     method: 'POST',

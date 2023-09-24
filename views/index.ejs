@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Mockup with Bootstrap</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
+  </head>
+  <body>
     <!-- Light/Dark Mode Toggle -->
     <div class="container mt-3 text-center">
-        <button id="toggleModeButton" class="btn btn-primary">Toggle Dark Mode</button>
-    </div>    
+      <button id="toggleModeButton" class="btn btn-primary">Toggle Dark Mode</button>
+    </div>
     <!-- Typewriter -->
     <div class="container text-center mt-5">
-        <div id="typewriter-container">
-            <h1 id="typewriter"></h1>
-        </div>
+      <div id="typewriter-container">
+        <h1 id="typewriter"></h1>
+      </div>
     </div>
     <!-- Language Dropdown -->
     <div class="container mt-3">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-3" id="languageColumn">
-                <select id="languageSelect" class="form-control">
-                    <option value="" disabled selected>Select a Language</option>
-                    <option value="en">English</option>
-                    <option value="es">Spanish</option>
-                    <option value="fr">French</option>
-                    <option value="cn">Chinese</option>
-                    <option value="jp">Japanese</option>
-                    <option value="kr">Korean</option>
-                    <option value="vn">Vietnamese</option>
-                </select>
-            </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-3" id="languageColumn">
+          <select id="languageSelect" class="form-control">
+            <option value="" disabled selected>Select a Language</option>
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="French">French</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Korean">Korean</option>
+            <option value="Vietnamese">Vietnamese</option>
+          </select>
         </div>
+      </div>
     </div>
     <!-- Centered Word Entry Box and "Add to List" Button -->
     <div class="container mt-3 text-center" id="textInputContainer" style="display: none;">
-        <div class="row justify-content-center">
-            <div class="col-md-5"> <!-- Use col-md-5 for the text box -->
-                <div class="input-group">
-                    <input type="text" id="userText" class="form-control" placeholder="Enter a word or phrase" color: #dbd6cb;>
-                    <button id="addToList" class="btn btn-primary">Add to List</button>
-                </div>
-            </div>
+      <div class="row justify-content-center">
+        <div
+          class="col-md-5">
+          <!-- Use col-md-5 for the text box -->
+          <div class="input-group">
+            <input type="text" id="userText" class="form-control" placeholder="Enter a word or phrase" color: #dbd6cb;>
+            <button id="addToList" class="btn btn-primary">Add to List</button>
+          </div>
         </div>
+      </div>
     </div>
     <!-- Centered Word List Container -->
     <div class="container mt-3 text-center" id="userWordListContainer" style="display: none;">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <div id="userWordList" style="margin: 0;">
-                    <!-- Content will be added here dynamically -->
-                </div>
-            </div>
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div
+            id="userWordList" style="margin: 0;"><!-- Content will be added here dynamically -->
+          </div>
         </div>
+      </div>
     </div>
     <!-- Generate Button -->
     <div class="container mt-4 text-center" id="generateButtonContainer" style="display: none;">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <button id="generateButton" class="btn btn-primary btn-block">Generate</button>
-            </div>
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <button id="generateButton" class="btn btn-primary btn-block">Generate</button>
         </div>
+      </div>
     </div>
     <!-- Add Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -69,5 +71,5 @@
     <!--Local Files-->
     <script src="/js/script.js"></script>
     <link rel="stylesheet" href="/css/styles.css">
-</body>
+  </body>
 </html>

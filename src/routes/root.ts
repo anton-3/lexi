@@ -36,7 +36,7 @@ router.post('/', bodyParser.json(), async (req, res) => {
   // req.body.words is a post body parameter containing all words
   // space-separated e.g. "perro hombre queso cocina"
   try {
-    await util.generateAll(String(req.body.words))
+    await util.generateAll(String(req.body.words), String(req.body.language))
     res.sendStatus(200)
   } catch (error) {
     console.error(error)

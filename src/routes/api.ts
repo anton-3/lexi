@@ -25,7 +25,7 @@ router.post('/gpt', bodyParser.json(), async (req, res) => {
 // formatted as a string separated by spaces e.g. "hombre perro carro"
 router.post('/generateStory', bodyParser.json(), async (req, res) => {
   try {
-    res.send(await util.generateStory(String(req.body.words)))
+    res.send(await util.generateStory(String(req.body.words), String(req.body.language)))
   } catch (error) {
     console.log(error)
     res.status(500)

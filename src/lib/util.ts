@@ -28,7 +28,7 @@ async function gpt(prompt: string) {
 
 // calls the GPT API and returns a story constructed from a
 // space-separated string of vocab words
-async function generateStory(wordList: string) {
+async function generateStory(wordList: string, language: string) {
   const words = wordList.split(' ')
   let wordString = ''
   words.forEach((word) => (wordString += `'${word}', `))
@@ -39,7 +39,7 @@ Your story must contain each of the following words: ${wordString}
 
 
 You will follow the following instructions:
-1. The sentences will be written in Spanish.
+1. The sentences will be written in ${language}.
 2. Each sentence MUST be written on its own line.
 3. You will write ${words.length} sentences.
 4. You will write the sentences and ONLY the sentences.
@@ -167,8 +167,8 @@ async function generateImage(text: string) {
   return `${process.env.IPFS_PROXY_URL}/${res.data.IpfsHash}`
 }
 
-async function generateAll(wordList: string) {
-  app.locals.story = await generateStory(wordList)
+async function generateAll(wordList: string, language: string) {
+  app.locals.story = await generateStory(wordList, language)
   app.locals.storyEnglish = await translate(app.locals.story)
   let descriptivePrompts
   if (process.env.GENERATE_IMAGES == 'true') {
