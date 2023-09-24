@@ -25,6 +25,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 
 ## What is the name of your App?
 
+Lexi
 <br /><br />
 ## What does your app do?
 *Describe in a paragraph or so*
