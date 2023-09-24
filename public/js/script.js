@@ -1,53 +1,53 @@
 // Function to preload the background image
 function preloadBackgroundImage() {
-    const preloadImage = new Image();
-    preloadImage.src = "/img/bg1_LightModeBlur.png";
-    preloadImage.onload = function () {
-        // Once the image is loaded, you can safely toggle dark mode
-        toggleDarkMode();
-    };
+  const preloadImage = new Image()
+  preloadImage.src = '/img/bg1_LightModeBlur.png'
+  preloadImage.onload = function () {
+    // Once the image is loaded, you can safely toggle dark mode
+    toggleDarkMode()
+  }
 }
 
 // Light/Dark Toggle
-document.getElementById("toggleModeButton").addEventListener("click", function () {
-    // Preload the background image before toggling dark mode
-    preloadBackgroundImage();
-});
+document.getElementById('toggleModeButton').addEventListener('click', function () {
+  // Preload the background image before toggling dark mode
+  preloadBackgroundImage()
+})
 
 // Function to toggle dark mode
 function toggleDarkMode() {
-    const isDarkMode = document.body.classList.toggle("dark-mode");
-    localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
-    updateToggleButton(isDarkMode);
+  const isDarkMode = document.body.classList.toggle('dark-mode')
+  localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled')
+  updateToggleButton(isDarkMode)
 }
 
 // Function to update the toggle button text
 function updateToggleButton(isDarkMode) {
-    const toggleModeButton = document.getElementById("toggleModeButton");
-    toggleModeButton.textContent = isDarkMode ? "Toggle Light Mode" : "Toggle Dark Mode";
+  const toggleModeButton = document.getElementById('toggleModeButton')
+  toggleModeButton.textContent = isDarkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode'
 }
 
 // Load user's preference on page load
-window.addEventListener("load", function () {
-    const darkModePreference = localStorage.getItem("darkMode");
-    if (darkModePreference === "enabled") {
-        toggleDarkMode();
-    } else {
-        setLightMode();
-    }
-});
+window.addEventListener('load', function () {
+  const darkModePreference = localStorage.getItem('darkMode')
+  if (darkModePreference === 'enabled') {
+    toggleDarkMode()
+  } else {
+    setLightMode()
+  }
+})
 
 // Function to set light mode
 function setLightMode() {
-    document.body.classList.remove("dark-mode");
-    localStorage.setItem("darkMode", "disabled");
-    updateToggleButton(false);
+  document.body.classList.remove('dark-mode')
+  localStorage.setItem('darkMode', 'disabled')
+  updateToggleButton(false)
 }
 
 // Check user's preferred color scheme
-if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-    // User prefers light mode
-    setLightMode();
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+  // User prefers light mode
+  setLightMode()
 }
 
 const greetings = [
@@ -223,7 +223,7 @@ document.getElementById('generateButton').addEventListener('click', function () 
     },
     body: JSON.stringify(fetchData),
   }
-  console.log('making request...')
+  document.querySelector('#generateButton').disabled = true
   fetch('/', fetchOptions)
     .then((response) => {
       if (response.ok) {

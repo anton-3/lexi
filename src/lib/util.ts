@@ -31,25 +31,19 @@ async function generateStory(wordList: string) {
   let wordString = ''
   words.forEach((word) => (wordString += `'${word}', `))
   wordString = wordString.slice(0, wordString.length - 2)
-  const prompt = `Your task is to write sentences. 
+  const prompt = `You are a children's storybook author, with the goal of teaching children a new language by incorporating specific vocabulary words in your story. Your task is to write a short story that includes certain vocabulary words. 
 
-Each of your sentences will contain one of the following words: 
-Word list: ${wordString}
+Your story must contain each of the following words: ${wordString}
 
 
-You will follow the following instructions
-1. the sentences will be written in Spanish
-2. the sentences will be simple, something a new language learner could understand. 
-3. You will write ${words.length + 1} sentences.
-4. you will include the word in the same form as written. it will be the exact same spelling as it is in the quotes. It will be the exact same part of speech as it is in quotes. You will completely avoid using similar words or alternate spellings. 
-5. you will write the sentences and only the sentences.
-6. You will use correct grammar and tense to mold sentences around the selected word.  
-7. You will design the sentences to form in a narrative structure, so that each sentence is related to each of the rest. For example, if the subject of one sentence is "the cat", it might be the object in the next sentence
-8. You can switch up the order that you use the words in the sentences, in order to form a more cohesive narrative. 
-9. You will type one sentence per line
-10. You must use each word in the list at least once in any of the sentences. You can use multiple selected words in one sentence when context is appropriate in order to make a narrative
-11. Avoid pronouns, just repeat the actual subject again if you put it in another sentence. Avoid using "he, she, we,
-12. Do not number the sentences.`
+You will follow the following instructions:
+1. The sentences will be written in Spanish.
+2. Each sentence MUST be written on its own line.
+3. You will write ${words.length}-${words.length + 2} sentences.
+4. You will write the sentences and ONLY the sentences.
+5. The story must contain each word in the word list at least once.
+6. The words can be used in any order, as long as they maintain a cohesive story from start to end.
+7. Do not use any pronouns such as "he, she, we, I, they".`
 
   return await gpt(prompt)
 }
