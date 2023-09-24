@@ -18,7 +18,7 @@ async function gpt(prompt: string) {
   const gptResponse = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
     messages: [{ role: 'user', content: prompt }],
-    temperature: 0.2,
+    temperature: 0.4,
     max_tokens: 500,
   })
   return gptResponse.choices[0].message.content
@@ -40,7 +40,7 @@ Word list: ${wordString}
 You will follow the following instructions
 1. the sentences will be written in Spanish
 2. the sentences will be simple, something a new language learner could understand. 
-3. You will write ${words.length + 2} sentences.
+3. You will write ${words.length + 1} sentences.
 4. you will include the word in the same form as written. it will be the exact same spelling as it is in the quotes. It will be the exact same part of speech as it is in quotes. You will completely avoid using similar words or alternate spellings. 
 5. you will write the sentences and only the sentences.
 6. You will use correct grammar and tense to mold sentences around the selected word.  
@@ -48,7 +48,9 @@ You will follow the following instructions
 8. You can switch up the order that you use the words in the sentences, in order to form a more cohesive narrative. 
 9. You will type one sentence per line
 10. You must use each word in the list at least once in any of the sentences. You can use multiple selected words in one sentence when context is appropriate in order to make a narrative
-11. Avoid pronouns, just repeat the actual subject again if you put it in another sentence. Avoid using "he, she, we,`
+11. Avoid pronouns, just repeat the actual subject again if you put it in another sentence. Avoid using "he, she, we,
+12. Do not number the sentences.`
+
   return await gpt(prompt)
 }
 
