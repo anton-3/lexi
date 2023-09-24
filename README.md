@@ -28,7 +28,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 Lexi
 <br /><br />
 ## What does your app do?
-Lexi is an AI-powered storybook generator who help beginners learn new languages. Lexi takes vocabulary words as input and provides a story in the user's chosen language, accompanied with pictures for each sentence. Lexi supports 8 languages and has translations available for each story it creates. 
+Lexi is an AI-powered storybook generator that helps beginners learn new languages. Lexi takes vocabulary words as input and provides a short, easily comprehensible story in the user's chosen language, accompanied by AI-generated pictures specifically catered to each sentence. Lexi supports 8 languages and has translations available for each story it creates. 
 
 <br /><br />
 
