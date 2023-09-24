@@ -66,13 +66,13 @@ Please delimit the scenes with the string '---' between each scene.
 Because each sentence is a new scene, you want to make sure subjects and objects that appear in more than one scene are painted the same way.
 Because of this, make sure you repeat the descriptions exactly for a subject or object that appears multiple times. THis means that each time a noun appears, it will have the same description. If you first describe a man as "tall, wears ballcap, has beard", you will have to describe him as that after every sentence he is in
 
-Make the descriptions short but dense. keep the descriptions to physical qualities to ensure consistency.
+Make the descriptions conain all practical information. keep the descriptions to physical qualities to ensure consistency.
 
 Here is an example of how you would format a description: if the sentence was "The woman walked outside", an appropriate modification would be "The woman walked outside", (the woman is tall with brown hair and is wearing a red dress)
 
 Notice how the original sentence is the same but there is added description afterwards.
 
-Dont add extra items that you are not given. Only include noun descriptors and settings.
+DO NOT USE ANY SPECIAL CHARACTERS. ONLY LETTERS AND NUMBERS
 
 There should be a description for every sentence. if the noun is an abstract idea or does not have physical properties, describe how it could be represented in visual form. 
 
@@ -124,11 +124,11 @@ async function generateImage(text: string) {
     samples: 1,
     text_prompts: [
       {
-        text: `${text} THICK OUTLINE, LOW DETAIL, ANIMATED_CARTOON, NOT_REALISTIC`,
+        text: `${text} THICK OUTLINE, LOW DETAIL, ANIMATED_CARTOON`,
         weight: 1,
       },
       {
-        text: 'ugly, blurry, scary, dirty, bad, evil',
+        text: 'ugly, blurry, scary, dirty, badrs, evil',
         weight: -1,
       },
     ],
