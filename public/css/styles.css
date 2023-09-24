@@ -61,3 +61,47 @@ body {
 #userWordList {
   margin: 0;
 }
+
+/* STORY */
+.card {
+  width: 650px; /* Adjust the width as needed */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px; /* Adjust spacing between cards */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  max-height: 650px; /* Adjust the maximum image height as needed */
+  object-fit: cover;
+}
+  
+.card-text {
+  font-size: 12pt;
+}
+
+/* Additional styles for hover effect */
+.card:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* .page-transition {
+  transition: transform 0.5s ease-in-out;
+}
+
+.page-rotate-left {
+  transform: rotateY(180deg);
+}
+
+.page-rotate-right {
+  transform: rotateY(0deg);
+}
+
+.image-transition {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.image-fade-out {
+  opacity: 0;
+} */
