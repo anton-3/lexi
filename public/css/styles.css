@@ -3,52 +3,51 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  color: #dbd6cb;
 }
 
 #typewriter-container {
-  height: 450px; /* Set a fixed height (adjust as needed) */
+  height: 450px; /* Set a fixed height */
 }
 
 #typewriter {
-  white-space: nowrap; /* Keep text in a single line */
+  white-space: wrap;
   margin: 0;
   padding-top: 300px;
   font-size: 40px;
+  color: #2f4858;
 }
 
 #userWordList {
-  border: 1px solid #ccc;
   padding: 10px;
-  background-color: #f5f5f5;
-  max-height: 150px; /* Optionally limit the height of the sidebar */
-  overflow-y: auto; /* Add vertical scroll if content exceeds the height */
+  max-height: 150px;
+  overflow-y: auto;
 }
 
-/* Remove the top margin for the sidebar container */
+/* Remove the top margin for the list */
 .container.mt-4 {
   margin-top: 0;
 }
 
-#inputContainer {
+#textInputContainer {
   transition: opacity 0.5s ease-in-out;
 }
 
 .word-item {
   cursor: pointer;
   margin: 5px 0;
-  padding: 5px;
+  padding: 7px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f5f5f5;
+  background-color: #2f4858;
   user-select: none;
 }
 
 /* Customize tooltip appearance */
 .tooltip-inner {
   background-color: #333;
-  color: #fff;
+  color: #dbd6cb;
 }
-
 
 .custom-select-language {
   width: 100%; /* Set the width to 100% to match the bar */
@@ -57,9 +56,40 @@ body {
 .center-text {
   text-align: center;
 }
-/* Adjust margins for the word list */
-#userWordList {
-  margin: 0;
+
+#languageSelect {
+  background-color: #2f4858;
+  color: #dbd6cb;
+}
+
+#userText {
+  background-color: #2f4858;
+  color: #dbd6cb;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+#userText::placeholder {
+  color: #dbd6cb;
+}
+
+#userText:focus {
+  outline: none;
+}
+
+/* Default button styles */
+.btn-primary {
+  background-color: #385179;
+  color: #dbd6cb;
+  border-color: #dbd6cb;
+}
+
+/* Button hover styles */
+.btn-primary:hover {
+  background-color: #485a73; /* New background color on hover */
+  border-color: #2f4858;
 }
 
 /* STORY */

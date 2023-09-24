@@ -118,6 +118,32 @@ function removeWord(wordElement) {
     wordElement.remove();
 }
 
+// Function to clear the word list container
+function clearWordList() {
+    const userList = document.getElementById("userWordList");
+    userList.innerHTML = "";
+}
+
+// Function to hide the "Generate" button
+function hideGenerateButton() {
+    document.getElementById("generateButtonContainer").style.display = "none";
+}
+
+// Function to reset the input text to the placeholder text
+function resetInputText() {
+    document.getElementById("userText").value = ""; // Clear the input field
+    document.getElementById("userText").placeholder = "Enter a word or phrase"; // Reset the placeholder text
+}
+
+// Attach a change event listener to the language selector
+document.getElementById("languageSelect").addEventListener("change", function () {
+    const selectedLanguage = this.value;
+    clearWordList();
+    hideGenerateButton();
+    resetInputText();
+    fadeInputContainer();
+});
+
 // Attach a click event listener to the "Add to List" button
 document.getElementById("addToList").addEventListener("click", addToWordList);
 
