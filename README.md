@@ -28,20 +28,20 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 Lexi
 <br /><br />
 ## What does your app do?
-*Describe in a paragraph or so*
+Lexi is an AI-powered storybook generator who help beginners learn new languages. Lexi takes vocabulary words as input and provides a story in the user's chosen language, accompanied with pictures for each sentence. Lexi supports 8 languages and has translations available for each story it creates. 
 
 <br /><br />
 
 
 ## What challenges are you building for? SELECT ALL THAT APPLY
 *See hackmidwest.com/#prizes for challenge details*
-- [ ]  Pinata Web3 Challenge
-- [ ]  Pinata Challenge
+- [* ]  Pinata Web3 Challenge
+- [* ]  Pinata Challenge
 - [ ]  Pinata ERC-6551 Challenge
 - [ ]  Okta Challenge
 - [ ]  GEHA Generative AI Emergency Response Challenge
 - [ ]  Corporate Challenge (only for official company teams)
-- [ ]  College Challenge (only for teams of up to 5 CS students from the same school)
+- [* ]  College Challenge (only for teams of up to 5 CS students from the same school)
 
 <br /><br />
 
