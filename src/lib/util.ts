@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
@@ -6,6 +7,7 @@ import { app } from '..'
 import axios from 'axios'
 import { OpenAI } from 'openai'
 import { config } from 'dotenv'
+import * as fs from 'fs'
 
 config()
 const openai = new OpenAI({
@@ -97,6 +99,58 @@ async function translate(text: string) {
   return response.data.translations[0].text
 }
 
+// generates an image based on descriptive text
+// returns a url to that image
+async function generateImage(text: string) {
+  const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STABILITY_KEY}`,
+  }
+  const body = {
+    steps: 20,
+    width: 512,
+    height: 512,
+    seed: 0,
+    cfg_scale: 5,
+    samples: 1,
+    text_prompts: [
+      {
+        text: `${text} (storybook, cartoon, animated)`,
+        weight: 1,
+      },
+      {
+        text: 'ugly, blurry, scary, dirty, bad, evil',
+        weight: -1,
+      },
+    ],
+  }
+
+  // just using fetch API here since that's what the docs use lol
+  const response = await fetch(String(process.env.STABILITY_URL), {
+    headers,
+    method: 'POST',
+    body: JSON.stringify(body),
+  })
+
+  if (!response.ok) {
+    console.error(`Error on image generation: ${await response.text()}`)
+    return
+  }
+
+  const responseJSON = await response.json()
+  responseJSON.artifacts.forEach(
+    (img: { base64: WithImplicitCoercion<string> | { [Symbol.toPrimitive](hint: 'string'): string } }) => {
+      fs.writeFileSync('asdf.png', Buffer.from(img.base64, 'base64'))
+    },
+  )
+
+  // const response = await axios.post(String(process.env.STABILITY_URL), {
+  //   headers: headers,
+  //   data: body,
+  // })
+}
+
 // Generates the storybook from start to finish
 async function generateAll(wordList: string) {
   app.locals.story = await generateStory(wordList)
@@ -113,7 +167,7 @@ async function generateAll(wordList: string) {
   // then get the links and store them in an array, one per sentence in the story
   // here we'll just use shrek pics as a placeholder
   app.locals.imageLinks = [
-    'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
+    generateImage(String(app.locals.descriptiveStory.split('\n')[0])),
     'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
     'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
     'https://cdn.discordapp.com/attachments/1153855137920602112/1155306154709225544/image.png',
