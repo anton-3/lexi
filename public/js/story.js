@@ -1,17 +1,20 @@
 let pageIndex = 0
 
+currentLanguage = 'foreign'
+
 // Function to update the story content based on the current page
 function updateStory() {
   const storyContent = document.getElementById('storyContent')
   const currentPage = storyPages[pageIndex]
 
+  const caption = currentLanguage == 'english' ? currentPage.englishCaption : currentPage.caption
   // Check if there is a current page to display
   if (currentPage) {
     storyContent.innerHTML = `
             <div class="card mx-auto"> <!-- Apply mx-auto class for horizontal centering -->
                 <img src="${currentPage.imageUrl}" alt="Page Image" class="card-img-top">
                 <div class="card-body">
-                    <p class="card-text">${currentPage.englishCaption}</p>
+                    <p class="card-text">${caption}</p>
                 </div>
             </div>
         `
@@ -40,4 +43,9 @@ document.getElementById('nextPage').addEventListener('click', function () {
     pageIndex++
     updateStory()
   }
+})
+
+document.getElementById('translateButton').addEventListener('click', function () {
+  currentLanguage = currentLanguage == 'english' ? 'foreign' : 'english'
+  updateStory()
 })
