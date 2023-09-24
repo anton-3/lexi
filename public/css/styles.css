@@ -1,7 +1,7 @@
 /* Light Mode */
 :root {
   --background-image: url('/img/bg1_LightModeBlur.png');
-  --text-color: #dbd6cb;
+  --text-color: #ffffff;
   --theme-contrast-color: #2f4858;
   --button-color: #385179;
   --button-hover-color: #485a73;
@@ -11,7 +11,7 @@
 /* Dark Mode */
 .dark-mode {
   --background-image: url('/img/bg1_DarkModeBlur.png');
-  --text-color: #171717;
+  --text-color: #000000;
   --theme-contrast-color: #e9efff;
   --button-color: #e1f1ff;
   --button-hover-color: #c5d1e6;
@@ -34,7 +34,7 @@ body {
 }
 
 #typewriter-container {
-  height: 450px; /* Set a fixed height */
+  height: 490px; /* Set a fixed height */
 }
 
 #typewriter {
