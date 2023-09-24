@@ -49,3 +49,18 @@ document.getElementById('translateButton').addEventListener('click', function ()
   currentLanguage = currentLanguage == 'english' ? 'foreign' : 'english'
   updateStory()
 })
+
+function getURLParameter(name) {
+  const params = new URLSearchParams(window.location.search)
+  return params.get(name)
+}
+
+window.addEventListener('load', function () {
+  // Get the darkMode parameter from the URL
+  const darkModePreference = getURLParameter('darkMode')
+
+  // Check if darkModePreference is "enabled" and set dark mode accordingly
+  if (darkModePreference === 'enabled') {
+    document.body.classList.add('dark-mode')
+  }
+})

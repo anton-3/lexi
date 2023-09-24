@@ -224,11 +224,12 @@ document.getElementById('generateButton').addEventListener('click', function () 
     body: JSON.stringify(fetchData),
   }
   document.querySelector('#generateButton').disabled = true
+  const darkModePreference = document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'
   fetch('/', fetchOptions)
     .then((response) => {
       if (response.ok) {
         // redirect to the storybook if it was successfully generated
-        window.location.href = '/story'
+        window.location.href = '/story?darkMode=' + darkModePreference
       } else {
         throw new Error('Storybook generation failed')
       }
