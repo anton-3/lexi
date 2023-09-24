@@ -50,54 +50,54 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matc
   setLightMode()
 }
 
-const staticText = "Hello, I'm Lexi:"; // Constant part of the greeting
+const staticText = "Hello, I'm Lexi:" // Constant part of the greeting
 const greetings = [
-    " an AI-Powered Storybook Generator.",
-    " un Generador de Libros de Historias impulsado por IA.",
-    " un Générateur de Livres d'Histoires alimenté par l'IA.",
-    " 一個由人工智慧驅動的故事書生成器.",
-    " 一个由人工智能驱动的故事书生成器.",
-    " AIで動作するストーリーブックジェネレーター。",
-    " AI로 작동하는 스토리북 생성기.",
-    " một Trình tạo Sách truyện được trang bị Trí tuệ Nhân tạo AI.",
-];
+  ' an AI-Powered Storybook Generator.',
+  ' un Generador de Libros de Historias impulsado por IA.',
+  " un Générateur de Livres d'Histoires alimenté par l'IA.",
+  ' 一個由人工智慧驅動的故事書生成器.',
+  ' 一个由人工智能驱动的故事书生成器.',
+  ' AIで動作するストーリーブックジェネレーター。',
+  ' AI로 작동하는 스토리북 생성기.',
+  ' một Trình tạo Sách truyện được trang bị Trí tuệ Nhân tạo AI.',
+]
 
-let index = 0; // Index of the current greeting
-let charIndex = 0; // Index of the current character
+let index = 0 // Index of the current greeting
+let charIndex = 0 // Index of the current character
 
 function typeWriter() {
-    const fullText = staticText + greetings[index];
-    
-    if (charIndex < fullText.length) {
-        // Append the next character to the text
-        document.getElementById("typewriter").innerHTML += fullText.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeWriter, 80); // Type speed (adjust as needed)
-    } else {
-        // Start erasing the current greeting
-        setTimeout(eraseText, 1500); // Wait for a moment before erasing
-    }
+  const fullText = staticText + greetings[index]
+
+  if (charIndex < fullText.length) {
+    // Append the next character to the text
+    document.getElementById('typewriter').innerHTML += fullText.charAt(charIndex)
+    charIndex++
+    setTimeout(typeWriter, 80) // Type speed (adjust as needed)
+  } else {
+    // Start erasing the current greeting
+    setTimeout(eraseText, 1500) // Wait for a moment before erasing
+  }
 }
 
 function eraseText() {
-    if (charIndex > staticText.length) {
-        // Remove the last character of the current greeting
-        const currentText = document.getElementById("typewriter").textContent;
-        const newText = currentText.substring(0, currentText.length - 1);
-        document.getElementById("typewriter").textContent = newText;
-        charIndex--;
-        setTimeout(eraseText, 25); // Erase speed (adjust as needed)
-    } else {
-        // Move to the next greeting
-        index = (index + 1) % greetings.length;
-        setTimeout(typeWriter, 500); // Wait before typing the next greeting
-    }
+  if (charIndex > staticText.length) {
+    // Remove the last character of the current greeting
+    const currentText = document.getElementById('typewriter').textContent
+    const newText = currentText.substring(0, currentText.length - 1)
+    document.getElementById('typewriter').textContent = newText
+    charIndex--
+    setTimeout(eraseText, 25) // Erase speed (adjust as needed)
+  } else {
+    // Move to the next greeting
+    index = (index + 1) % greetings.length
+    setTimeout(typeWriter, 500) // Wait before typing the next greeting
+  }
 }
 
 // Start the typewriter effect when the page loads
 window.onload = function () {
-    typeWriter();
-};
+  typeWriter()
+}
 
 // Function to set the default language to English when the page loads
 function setDefaultLanguage() {
@@ -246,3 +246,34 @@ document.getElementById('generateButton').addEventListener('click', function () 
       console.error('Storybook generation failed', error)
     })
 })
+
+function loadingPopup() {
+  const overlay = document.createElement('div')
+  overlay.style.position = 'fixed'
+  overlay.style.top = '0'
+  overlay.style.left = '0'
+  overlay.style.width = '100%'
+  overlay.style.height = '100%'
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'
+  overlay.style.zIndex = '9999'
+  overlay.style.display = 'flex'
+  overlay.style.justifyContent = 'center'
+  overlay.style.alignItems = 'center'
+
+  // Create a div element for the loading message
+  const loadingMessage = document.createElement('div')
+  loadingMessage.style.color = 'black'
+  loadingMessage.innerText = 'Loading...\n\nPlease be patient, this can take up to a minute...'
+  loadingMessage.style.fontSize = '20px'
+  loadingMessage.style.backgroundColor = '#fff'
+  loadingMessage.style.padding = '20px'
+  loadingMessage.style.borderRadius = '15px'
+  loadingMessage.style.height = '180px'
+  loadingMessage.style.width = '300px'
+
+  // Append the loading message div to the overlay
+  overlay.appendChild(loadingMessage)
+
+  // Append the overlay to the document body
+  document.body.appendChild(overlay)
+}
