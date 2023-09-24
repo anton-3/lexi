@@ -167,23 +167,20 @@ async function generateImage(text: string) {
   return `${process.env.IPFS_PROXY_URL}/${res.data.IpfsHash}`
 }
 
-// Generates the storybook from start to finish
 async function generateAll(wordList: string) {
   app.locals.story = await generateStory(wordList)
   app.locals.storyEnglish = await translate(app.locals.story)
-  app.locals.descriptiveStory = await convertDescriptive(app.locals.storyEnglish)
-  // console.log('\n\nSTORY:')
-  // console.log(app.locals.story)
-  // console.log('ENGLISH:')
-  // console.log(app.locals.storyEnglish)
-  // console.log('DESCRIPTIVE:')
-
-  const descriptivePrompts = app.locals.descriptiveStory.split('---')
+  let descriptivePrompts
+  if (process.env.GENERATE_IMAGES == 'true') {
+    app.locals.descriptiveStory = await convertDescriptive(app.locals.storyEnglish)
+    descriptivePrompts = app.locals.descriptiveStory.split('---')
+    console.log('descriptive prompts:')
+  }
   app.locals.imageLinks = []
-  for (let i = 0; i < descriptivePrompts.length; i++) {
-    // console.log(`${i}: ${descriptivePrompts[i].trim()}`)
+  for (let i = 0; i < app.locals.story.split('\n').length; i++) {
     let imageLink
     if (process.env.GENERATE_IMAGES == 'true') {
+      console.log(`${i}: ${descriptivePrompts[i].trim()}`)
       const imageGenText = String(descriptivePrompts[i].trim())
       imageLink = await generateImage(imageGenText)
     } else {
