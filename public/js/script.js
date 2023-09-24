@@ -50,48 +50,54 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matc
   setLightMode()
 }
 
+const staticText = "Hello, I'm Lexi:"; // Constant part of the greeting
 const greetings = [
-  "Hello, I'm an AI-Powered Storybook Generator!",
-  '¡Hola, soy un Generador de Cuentos impulsado por IA!',
-  "Bonjour, je suis un Générateur de Livres d'Histoires alimenté par l'IA !",
-  '你好，我是一款由人工智能驱动的故事书生成器！',
-  'こんにちは、私はAIによって動作するストーリーブックジェネレーターです！',
-  '안녕하세요, 저는 인공지능으로 작동하는 스토리북 생성기입니다!',
-  'Xin chào, tôi là một Trình tạo Sách truyện được trang bị trí tuệ nhân tạo (AI)!',
-]
+    " an AI-Powered Storybook Generator.",
+    " un Generador de Libros de Historias impulsado por IA.",
+    " un Générateur de Livres d'Histoires alimenté par l'IA.",
+    " 一個由人工智慧驅動的故事書生成器.",
+    " 一个由人工智能驱动的故事书生成器.",
+    " AIで動作するストーリーブックジェネレーター。",
+    " AI로 작동하는 스토리북 생성기.",
+    " một Trình tạo Sách truyện được trang bị Trí tuệ Nhân tạo AI.",
+];
 
-let index = 0 // Index of the current greeting
-let charIndex = 0 // Index of the current character
-let firstGreetingCompletion = true
+let index = 0; // Index of the current greeting
+let charIndex = 0; // Index of the current character
+
 function typeWriter() {
-  if (charIndex < greetings[index].length) {
-    // Append the next character to the text
-    document.getElementById('typewriter').innerHTML += greetings[index].charAt(charIndex)
-    charIndex++
-    setTimeout(typeWriter, 80) // Type speed (adjust as needed)
-  } else {
-    setTimeout(eraseText, 1500) // Wait for a moment before erasing
-  }
+    const fullText = staticText + greetings[index];
+    
+    if (charIndex < fullText.length) {
+        // Append the next character to the text
+        document.getElementById("typewriter").innerHTML += fullText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 80); // Type speed (adjust as needed)
+    } else {
+        // Start erasing the current greeting
+        setTimeout(eraseText, 1500); // Wait for a moment before erasing
+    }
 }
 
 function eraseText() {
-  if (charIndex > 0) {
-    // Remove the last character from the text
-    const currentText = greetings[index].substring(0, charIndex - 1)
-    document.getElementById('typewriter').innerHTML = currentText
-    charIndex--
-    setTimeout(eraseText, 25) // Erase speed
-  } else {
-    // Move to the next greeting
-    index = (index + 1) % greetings.length
-    setTimeout(typeWriter, 500) // Wait before typing the next greeting
-  }
+    if (charIndex > staticText.length) {
+        // Remove the last character of the current greeting
+        const currentText = document.getElementById("typewriter").textContent;
+        const newText = currentText.substring(0, currentText.length - 1);
+        document.getElementById("typewriter").textContent = newText;
+        charIndex--;
+        setTimeout(eraseText, 25); // Erase speed (adjust as needed)
+    } else {
+        // Move to the next greeting
+        index = (index + 1) % greetings.length;
+        setTimeout(typeWriter, 500); // Wait before typing the next greeting
+    }
 }
 
 // Start the typewriter effect when the page loads
 window.onload = function () {
-  typeWriter()
-}
+    typeWriter();
+};
 
 // Function to set the default language to English when the page loads
 function setDefaultLanguage() {
