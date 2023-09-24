@@ -37,10 +37,10 @@ router.post('/', bodyParser.json(), async (req, res) => {
   // space-separated e.g. "perro hombre queso cocina"
   try {
     await util.generateAll(String(req.body.words))
-    res.status(200)
+    res.sendStatus(200)
   } catch (error) {
-    console.log(error)
-    res.status(500)
+    console.error(error)
+    res.sendStatus(500)
   }
 })
 
