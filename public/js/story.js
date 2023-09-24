@@ -1,48 +1,27 @@
-// Sample pages of your story with pictures and captions
-const storyPages = [
-    {
-        imageUrl: "", // Needs a url
-        caption: "", // Needs a caption
-    },
-    {
-        imageUrl: "", // Needs a url
-        caption: "", // Needs a caption
-    },
-    {
-        imageUrl: "", // Needs a url
-        caption: "", // Needs a caption
-    },
-    {
-        imageUrl: "", // Needs a url
-        caption: "", // Needs a caption
-    },
-    // Add more pages as needed
-];
-
-let currentPageIndex = 0;
+let pageIndex = 0
 
 // Function to update the story content based on the current page
-function updateStoryContent() {
-    const storyContent = document.getElementById("storyContent");
-    const currentPage = storyPages[currentPageIndex];
+function updateStory() {
+  const storyContent = document.getElementById('storyContent')
+  const currentPage = storyPages[pageIndex]
 
-    // Check if there is a current page to display
-    if (currentPage) {
-        storyContent.innerHTML = `
+  // Check if there is a current page to display
+  if (currentPage) {
+    storyContent.innerHTML = `
             <div class="card mx-auto"> <!-- Apply mx-auto class for horizontal centering -->
                 <img src="${currentPage.imageUrl}" alt="Page Image" class="card-img-top">
                 <div class="card-body">
                     <p class="card-text">${currentPage.caption}</p>
                 </div>
             </div>
-        `;
+        `
 
-        // Apply object-fit to the image
-        const imageElement = storyContent.querySelector(".card-img-top");
-        imageElement.style.objectFit = "cover"; // You can adjust 'cover' to other values like 'contain' as needed
-    } else {
-        storyContent.innerHTML = "End of the story.";
-    }
+    // Apply object-fit to the image
+    const imageElement = storyContent.querySelector('.card-img-top')
+    imageElement.style.objectFit = 'cover' // You can adjust 'cover' to other values like 'contain' as needed
+  } else {
+    storyContent.innerHTML = 'End of the story.'
+  }
 }
 
 /**
@@ -52,7 +31,7 @@ function updateStoryContent() {
 // // Function to update the story content based on the current page with image and caption transition
 // function updateStoryContentWithTransition(nextPageIndex) {
 //     const storyContent = document.getElementById("storyContent");
-//     const currentPage = storyPages[currentPageIndex];
+//     const currentPage = storyPages[pageIndex];
 //     const nextPage = storyPages[nextPageIndex];
 
 //     // Check if there is a current page to display
@@ -97,34 +76,20 @@ function updateStoryContent() {
 //     }
 // }
 
-// document.getElementById("prevPage").addEventListener("click", function () {
-//     if (currentPageIndex > 0) {
-//         currentPageIndex--;
-//         updateStoryContentWithTransition(currentPageIndex);
-//     }
-// });
-
-// document.getElementById("nextPage").addEventListener("click", function () {
-//     if (currentPageIndex < storyPages.length - 1) {
-//         currentPageIndex++;
-//         updateStoryContentWithTransition(currentPageIndex);
-//     }
-// });
-
 // Initial load
-updateStoryContent();
+updateStory()
 
 // Attach event listeners for navigation
-document.getElementById("prevPage").addEventListener("click", function () {
-    if (currentPageIndex > 0) {
-        currentPageIndex--;
-        updateStoryContent();
-    }
-});
+document.getElementById('prevPage').addEventListener('click', function () {
+  if (pageIndex > 0) {
+    pageIndex--
+    updateStory()
+  }
+})
 
-document.getElementById("nextPage").addEventListener("click", function () {
-    if (currentPageIndex < storyPages.length - 1) {
-        currentPageIndex++;
-        updateStoryContent();
-    }
-});
+document.getElementById('nextPage').addEventListener('click', function () {
+  if (pageIndex < storyPages.length - 1) {
+    pageIndex++
+    updateStory()
+  }
+})

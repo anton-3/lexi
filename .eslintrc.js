@@ -18,7 +18,7 @@ module.exports = {
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
     },
   ],
-  ignorePatterns: ['.eslintrc.cjs'],
+  ignorePatterns: ['.eslintrc.cjs', 'public/js/*.js'],
   env: {
     node: true,
   },
