@@ -49,7 +49,8 @@ You will follow the following instructions:
 8. The sentences must contain each word in the word list at least once. You can use one or more listed words per sentence, but they all hve to be used at some point, and each sentence needs one listed word.
 9. The words can be used in any order, as long as they maintain a cohesive story from start to end.
 10. Do not use any pronouns such as "he, she, we, I, they".
-11. Make the sentences relatively simple, to the point where a new language learner could understand.`
+11. Make the sentences relatively simple, to the point where a new language learner could understand.
+12. Generate sentences that logically make sense. For example, "the apple waits for the car" is not logical. Try to keep them realistic to something that would occur in the real world`
 
   return await gpt(prompt)
 }
@@ -64,6 +65,8 @@ Please delimit the scenes with the string '---' between each scene.
 
 Because each sentence is a new scene, you want to make sure subjects and objects that appear in more than one scene are painted the same way.
 Because of this, make sure you repeat the descriptions exactly for a subject or object that appears multiple times. THis means that each time a noun appears, it will have the same description. If you first describe a man as "tall, wears ballcap, has beard", you will have to describe him as that after every sentence he is in
+
+Make the descriptions short but information filled. keep the descriptions to physical qualities to ensure consistency.
 
 Here is an example of how you would format a description: if the sentence was "The woman walked outside", an appropriate modification would be "The woman walked outside", (the woman is tall with brown hair and is wearing a red dress)
 
