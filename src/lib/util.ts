@@ -43,7 +43,7 @@ You will follow the following instructions:
 2. Each sentence MUST be written on its own line.
 3. You will write ${words.length} sentences.
 4. You will write the sentences and ONLY the sentences.
-5. You will include the word in the same form as written in the list. it will be the exact same spelling. it will be the exact same part f speech. you will completely avoid using similar words and alternate apellings. 
+5. You will include the word in the same form as written in the list. it will be the exact same spelling. it will be the exact same part of speech. you will completely avoid using similar words and alternate apellings. 
 6. You will use correct grammar and tense to mold sentences around the selected word
 7. You will design the sentences to form in a narrative structure, so that each sentence is related to each of the rest. Every sentence should connect to the one before it and the one after it.
 8. The sentences must contain each word in the word list at least once. You can use one or more listed words per sentence, but they all hve to be used at some point, and each sentence needs one listed word.
